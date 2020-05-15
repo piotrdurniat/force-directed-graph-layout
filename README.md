@@ -1,1 +1,3 @@
-# Graph data stucture representation written in JavaScript
+# Graph data structure
+
+- written in JavaScript

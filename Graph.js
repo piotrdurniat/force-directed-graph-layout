@@ -40,26 +40,53 @@ class Graph {
         }
     }
 
-    consoleTableVertices() {
+    getAdjacencyList() {
         let table = [];
         for (let vertex of this.vertices) {
-            table.push(vertex);
-        }
-        console.log("Graph vertices:");
-        console.table(table);
-    }
-
-    printAdjecencyTable() {
-        let table = [];
-        for (let vertex of this.vertices) {
-            let row = [vertex[0]];
-            let neighbors = vertex[1];
+            const vertexLabel = vertex[0];
+            let row = [vertexLabel];
+            const neighbors = vertex[1];
             for (let neighbor of neighbors) {
                 row.push(neighbor[0]);
             }
             table.push(row);
         }
-        console.log("Adjecency Table:");
-        console.table(table);
+        return table;
+    }
+
+    getAdjacencyMatrix() {
+        let matrix = [];
+        for (let v1 of this.vertices) {
+            let rows = [];
+            const neighbors = v1[1];
+            for (let v2 of this.vertices) {
+                const neighborLabel = v2[0];
+                if (neighbors.indexOf(neighborLabel) >= 0) rows.push(1);
+                else rows.push(0);
+            }
+            matrix.push(rows);
+        }
+        return matrix;
+    }
+
+    getVertices() {
+        let vertices = [];
+        for (let vertex of this.vertices) {
+            const vertexLabel = vertex[0];
+            vertices.push(vertexLabel);
+        }
+        return vertices;
+    }
+
+    getEdges() {
+        let edges = [];
+        for (let vertex of this.vertices) {
+            const vertexLabel = vertex[0];
+            const neighbors = vertex[1];
+            for (let neighbor of neighbors) {
+                edges.push([vertexLabel, neighbor]);
+            }
+        }
+        return edges;
     }
 }
