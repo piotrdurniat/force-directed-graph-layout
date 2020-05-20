@@ -47,7 +47,7 @@ class Graph {
             let row = [vertexLabel];
             const neighbors = vertex[1];
             for (let neighbor of neighbors) {
-                row.push(neighbor[0]);
+                row.push(neighbor);
             }
             table.push(row);
         }
