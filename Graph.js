@@ -13,7 +13,7 @@ class Graph {
 
     addVertex(label) {
         if (this.getVertex(label)) {
-            console.log("The vertex already exists.");
+            // console.log("The vertex already exists.");
         } else {
             this.vertices.push(new Vertex(label));
         }
@@ -31,7 +31,7 @@ class Graph {
 
         const e = new Edge(this.getVertex(label1), this.getVertex(label2), directed);
         if (!this.hasEdge(e)) {
-            console.log("edge already exists, not adding");
+            // console.log("edge already exists, not adding");
             this.edges.push(e);
         }
     }
@@ -111,8 +111,28 @@ class Graph {
     }
 
     show() {
+        for (let vertex of this.vertices) {
+            vertex.show();
+        }
         for (let edge of this.edges) {
             edge.show();
+        }
+    }
+
+    update() {
+        for (let vertex of this.vertices) {
+            vertex.update();
+        }
+    }
+
+    organize() {
+        for (let edge of this.edges) {
+            edge.attractVertices();
+        }
+        for (let v1 of this.vertices) {
+            for (let v2 of this.vertices) {
+                if (v1 !== v2) v1.repel(v2);
+            }
         }
     }
 
@@ -131,6 +151,12 @@ class Graph {
     mouseDragged() {
         for (let v of this.vertices) {
             v.mouseDragged();
+        }
+    }
+
+    pin() {
+        for (let v of this.vertices) {
+            v.pin();
         }
     }
 }

@@ -1,5 +1,5 @@
 class Edge {
-    static diameter = 3;
+    static diameter = 2;
 
     constructor(vertex1, vertex2, directed = false) {
         this.vertex1 = vertex1;
@@ -34,7 +34,10 @@ class Edge {
             this.vertex2.pos.x,
             this.vertex2.pos.y
         );
-        this.vertex1.show();
-        this.vertex2.show();
+    }
+
+    attractVertices() {
+        this.vertex1.attract(this.vertex2);
+        this.vertex2.attract(this.vertex1);
     }
 }
