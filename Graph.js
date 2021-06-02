@@ -12,9 +12,7 @@ class Graph {
     }
 
     addVertex(label) {
-        if (this.getVertex(label)) {
-            // console.log("The vertex already exists.");
-        } else {
+        if (!this.getVertex(label)) {
             this.vertices.push(new Vertex(label));
         }
     }
@@ -29,9 +27,12 @@ class Graph {
         this.addVertex(label1);
         this.addVertex(label2);
 
-        const e = new Edge(this.getVertex(label1), this.getVertex(label2), directed);
+        const e = new Edge(
+            this.getVertex(label1),
+            this.getVertex(label2),
+            directed
+        );
         if (!this.hasEdge(e)) {
-            // console.log("edge already exists, not adding");
             this.edges.push(e);
         }
     }

@@ -13,8 +13,8 @@ class Vertex {
     }
 
     randomPos() {
-        let x = random(width / 4) + width / 2;
-        let y = random(height / 4) + height / 2;
+        let x = random(width);
+        let y = random(height);
         return new p5.Vector(x, y);
     }
 
@@ -69,7 +69,8 @@ class Vertex {
 
     distSq(pos1, pos2) {
         return (
-            (pos1.x - pos2.x) * (pos1.x - pos2.x) + (pos1.y - pos2.y) * (pos1.y - pos2.y)
+            (pos1.x - pos2.x) * (pos1.x - pos2.x) +
+            (pos1.y - pos2.y) * (pos1.y - pos2.y)
         );
     }
 
